@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Кнопка сендвич-меню -->
         <ImageView
             android:id="@+id/menu_button"
             android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             android:src="@drawable/icon_menu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <!-- Блок доставки -->
         <LinearLayout
             android:id="@+id/address_button"
             android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
 
-                <!-- Вертикальные границы экрана -->
+                <!-- Границы экрана -->
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/left_border"
                     android:layout_width="0dp"
@@ -100,6 +101,7 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_end="16dp" />
 
+                <!-- Поле поиска -->
                 <EditText
                     android:id="@+id/search_field"
                     android:layout_width="0dp"
@@ -118,7 +120,7 @@
                     app:layout_constraintEnd_toStartOf="@id/favorite_button"
                     app:layout_constraintStart_toStartOf="@id/left_border"
                     app:layout_constraintTop_toTopOf="parent" />
-
+                <!-- Иконка поиска -->
                 <ImageView
                     android:id="@+id/search_icon"
                     android:layout_width="wrap_content"
@@ -129,7 +131,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/search_field"
                     app:layout_constraintEnd_toEndOf="@id/search_field"
                     app:layout_constraintTop_toTopOf="@id/search_field" />
-
+                <!-- Кнопка добавления в избранное -->
                 <ImageView
                     android:id="@+id/favorite_button"
                     android:layout_width="wrap_content"
@@ -143,6 +145,7 @@
 
                 <!-- Блок с промо разделами -->
                 <HorizontalScrollView
+                    android:id="@+id/promo_section_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
@@ -150,7 +153,6 @@
                     app:layout_constraintTop_toBottomOf="@id/search_field">
 
                     <LinearLayout
-                        android:id="@+id/promo_section_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
@@ -183,7 +185,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_2"
                             android:layout_width="wrap_content"
@@ -210,7 +211,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_3"
                             android:layout_width="wrap_content"
@@ -237,7 +237,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_4"
                             android:layout_width="wrap_content"
@@ -264,7 +263,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_5"
                             android:layout_width="wrap_content"
@@ -291,7 +289,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_6"
                             android:layout_width="wrap_content"
@@ -318,7 +315,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_7"
                             android:layout_width="wrap_content"
@@ -345,6 +341,354 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+                <!-- Блок с промо баннерами -->
+                <HorizontalScrollView
+                    android:id="@+id/promo_banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promo_section_container">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_1"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_2"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_3"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_4"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_5"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_6"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:id="@+id/promo_banner_7"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
 
                     </LinearLayout>
 
