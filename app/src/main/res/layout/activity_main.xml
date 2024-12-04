@@ -107,7 +107,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
-                    android:background="@drawable/shape_rounded_rectangle"
+                    android:background="@drawable/shape_rounded_rectangle_4"
                     android:hint="Поиск товаров"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
@@ -693,6 +693,55 @@
                     </LinearLayout>
 
                 </HorizontalScrollView>
+
+                <!-- Заголовок акции -->
+                <TextView
+                    android:id="@+id/promotional_items_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:text="Акции"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
+                    app:layout_constraintTop_toBottomOf="@id/promo_banner_container" />
+                <!-- Кнопка смотреть все -->
+                <LinearLayout
+                    android:id="@+id/show_all_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rounded_rectangle_25"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/promotional_items_header"
+                    app:layout_constraintEnd_toEndOf="@id/right_border"
+                    app:layout_constraintTop_toTopOf="@id/promotional_items_header">
+
+                    <TextView
+                        android:id="@+id/show_all_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/sf_pro_display"
+                        android:gravity="center"
+                        android:text="Смотреть все"
+                        android:textColor="#000000"
+                        android:textFontWeight="400"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/icon_arrow_forward" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
