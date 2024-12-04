@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,13 +11,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_screen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/menu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="56dp"
             android:clickable="true"
             android:contentDescription="menu button"
@@ -85,6 +86,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
 
+                <!-- Вертикальные границы экрана -->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/left_border"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/right_border"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
                 <EditText
                     android:id="@+id/search_field"
                     android:layout_width="0dp"
@@ -101,7 +116,7 @@
                     android:textColorHint="#717171"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@id/favorite_button"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -123,15 +138,13 @@
                     android:contentDescription="favorite button"
                     android:src="@drawable/icon_favorite"
                     app:layout_constraintBottom_toBottomOf="@id/search_field"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/right_border"
                     app:layout_constraintTop_toTopOf="@id/search_field" />
 
                 <!-- Блок с промо разделами -->
-
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:scrollbars="none"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/search_field">
@@ -147,6 +160,7 @@
                             android:id="@+id/promo_section_1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="16dp"
                             android:layout_marginEnd="8dp"
                             android:clickable="true"
                             android:orientation="vertical">
