@@ -6,12 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:ignore="HardcodedText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_screen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <!-- Кнопка сендвич-меню -->
         <ImageView
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="32dp"
             android:clickable="true"
             android:contentDescription="menu button"
             android:src="@drawable/icon_menu"
@@ -76,16 +77,18 @@
         </LinearLayout>
 
         <ScrollView
+            android:paddingTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_button">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/body_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_height="wrap_content">
 
                 <!-- Границы экрана -->
                 <androidx.constraintlayout.widget.Guideline
@@ -755,7 +758,7 @@
 
                 </LinearLayout>
 
-                <!-- ББлок с акционными товарами -->
+                <!-- Блок с акционными товарами -->
                 <HorizontalScrollView
                     android:id="@+id/promotional_items_container"
                     android:layout_width="match_parent"
@@ -769,6 +772,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal">
+
                         <FrameLayout
                             android:id="@+id/promotional_item_1"
                             android:layout_width="108dp"
@@ -889,6 +893,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_2"
                             android:layout_width="108dp"
@@ -1001,6 +1006,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_3"
                             android:layout_width="108dp"
@@ -1113,6 +1119,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_4"
                             android:layout_width="108dp"
@@ -1225,6 +1232,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_5"
                             android:layout_width="108dp"
@@ -1337,6 +1345,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_6"
                             android:layout_width="108dp"
@@ -1449,6 +1458,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                         <FrameLayout
                             android:id="@+id/promotional_item_7"
                             android:layout_width="108dp"
@@ -1563,6 +1573,378 @@
                         </FrameLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
+
+                <!-- Заголовок каталог -->
+                <TextView
+                    android:id="@+id/catalog_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:text="Каталог"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
+                    app:layout_constraintTop_toBottomOf="@id/promotional_items_container" />
+                <!-- Каталог (разделы) -->
+                <GridLayout
+                    android:id="@+id/catalog_items_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="16dp"
+                    android:columnCount="3"
+                    android:padding="16dp"
+                    android:rowCount="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalog_header">
+
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_1"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFC1B6"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Наборы"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_2"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFE1AD"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Пицца"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_3"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#BAB892"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_3" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Паста"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_4"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#C4D3CE"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_4" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Ризотто"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_5"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#B9C4C8"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_5" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Салаты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_6"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#A3AE9D"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_6" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Полу\nфабрикаты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_7"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFE6B6"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_7" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Десерты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_8"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#D3C4C4"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_8" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Добавки\nк блюдам"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:layout_rowWeight="0"
+                        android:id="@+id/catalog_item_9"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFD4AD"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_9" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Напитки"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+
+                </GridLayout>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
