@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.MainFragment"
+    tools:ignore="HardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Кнопка сендвич-меню -->
+        <ImageView
+            android:id="@+id/menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:contentDescription="menu button"
+            android:src="@drawable/icon_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!-- Блок доставки -->
+        <LinearLayout
+            android:id="@+id/address_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:clickable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/menu_button"
+            app:layout_constraintStart_toEndOf="@id/menu_button"
+            app:layout_constraintTop_toTopOf="@id/menu_button">
+
+            <TextView
+                android:id="@+id/delivery_text"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="400"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="Доставка"
+                android:textColor="#717171"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/address_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/address_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="400"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:maxLines="1"
+                    android:text="Пискунова, 24"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/arrow_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="arrow down"
+                    android:src="@drawable/icon_arrow_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:paddingTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/body_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Границы экрана -->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/left_border"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/right_border"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <!-- Поле поиска -->
+                <EditText
+                    android:id="@+id/search_field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_rounded_rectangle_4"
+                    android:hint="Поиск товаров"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:minHeight="32dp"
+                    android:paddingHorizontal="12dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textColorHint="#717171"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/favorite_button"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!-- Иконка поиска -->
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="search icon"
+                    android:src="@drawable/icon_search"
+                    app:layout_constraintBottom_toBottomOf="@id/search_field"
+                    app:layout_constraintEnd_toEndOf="@id/search_field"
+                    app:layout_constraintTop_toTopOf="@id/search_field" />
+                <!-- Кнопка добавления в избранное -->
+                <ImageView
+                    android:id="@+id/favorite_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="favorite button"
+                    android:src="@drawable/icon_favorite"
+                    app:layout_constraintBottom_toBottomOf="@id/search_field"
+                    app:layout_constraintEnd_toEndOf="@id/right_border"
+                    app:layout_constraintTop_toTopOf="@id/search_field" />
+
+                <!-- Блок с промо разделами -->
+                <HorizontalScrollView
+                    android:id="@+id/promo_section_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/search_field">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_pizza" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="Летний пикник"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_salad" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="Летний обед"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_sandwich" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="На ужин"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_pizza" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="Летний пикник"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_salad" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="Летний обед"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_sandwich" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="На ужин"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/promo_section_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="8dp"
+                                android:src="@drawable/image_pizza" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:text="Летний пикник"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+                <!-- Блок с промо баннерами -->
+                <HorizontalScrollView
+                    android:id="@+id/promo_banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promo_section_container">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_1"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_2"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_3"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_4"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_5"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_6"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_red" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь закрытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 50%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promo_banner_7"
+                            android:layout_width="290dp"
+                            android:layout_height="115dp"
+                            android:layout_marginEnd="12dp"
+                            android:clickable="true">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="290dp"
+                                android:layout_height="115dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/image_banner_yellow" />
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="В честь открытия"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="400"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_black"
+                                    android:text="Скидки 20%"
+                                    android:textColor="#FFFFFF"
+                                    android:textFontWeight="800"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <!-- Заголовок акции -->
+                <TextView
+                    android:id="@+id/promotional_items_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:text="Акции"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
+                    app:layout_constraintTop_toBottomOf="@id/promo_banner_container" />
+                <!-- Кнопка смотреть все -->
+                <LinearLayout
+                    android:id="@+id/show_all_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rounded_rectangle_25"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/promotional_items_header"
+                    app:layout_constraintEnd_toEndOf="@id/right_border"
+                    app:layout_constraintTop_toTopOf="@id/promotional_items_header">
+
+                    <TextView
+                        android:id="@+id/show_all_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/sf_pro_display"
+                        android:gravity="center"
+                        android:text="Смотреть все"
+                        android:textColor="#000000"
+                        android:textFontWeight="400"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/icon_arrow_forward" />
+
+                </LinearLayout>
+
+                <!-- Блок с акционными товарами -->
+                <HorizontalScrollView
+                    android:id="@+id/promotional_items_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promotional_items_header">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_1"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-35%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_orange_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="Новинка"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Черные спагетти с морепродуктами (большая порция)"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г   360 ₽"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <ImageView
+                                    android:id="@+id/minus_button_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:clickable="true"
+                                    android:paddingStart="-8dp"
+                                    android:src="@drawable/icon_minus" />
+
+                                <TextView
+                                    android:id="@+id/counter_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:text="1"
+                                    android:textColor="#000000"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:id="@+id/plus_button_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:clickable="true"
+                                    android:paddingEnd="-8dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_2"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_2" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-25%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Казаречче без индейки но с томатами"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶3̶6̶0̶ ̶₽̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_3"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="-12dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_3" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-35%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Равиоли с грибами, но грибы придется поискать"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶1̶3̶6̶0̶ ̶₽̶̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="1200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_4"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_2" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-25%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Казаречче без индейки но с томатами"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶3̶6̶0̶ ̶₽̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_5"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="-12dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_3" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-35%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Равиоли с грибами, но грибы придется поискать"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶1̶3̶6̶0̶ ̶₽̶̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="1200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_6"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="4dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_2" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-25%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Казаречче без индейки но с томатами"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶3̶6̶0̶ ̶₽̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/promotional_item_7"
+                            android:layout_width="108dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="12dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="108dp"
+                                android:layout_height="200dp"
+                                android:backgroundTint="#F4F4F4"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/image_dish_7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="108dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="-12dp"
+                                    android:clickable="true"
+                                    android:src="@drawable/image_dish_3" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/shape_rounded_rectangle_red_10"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:paddingHorizontal="4dp"
+                                android:text="-35%"
+                                android:textColor="#FFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="90dp"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:maxLines="4"
+                                    android:text="Равиоли с грибами, но грибы придется поискать"
+                                    android:textColor="#000000"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sf_pro_display"
+                                    android:text="230 г"
+                                    android:textColor="#717171"
+                                    android:textFontWeight="400"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/count_container_7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:orientation="horizontal"
+                                android:paddingVertical="4dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="-6dp"
+                                        android:fontFamily="@font/sf_pro_display"
+                                        android:text="̶1̶3̶6̶0̶ ̶₽̶̶"
+                                        android:textColor="#FF4231"
+                                        android:textFontWeight="400"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_marginBottom="-4dp"
+                                        android:layout_weight="500"
+                                        android:text="1200 ₽"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/plus_yellow_button_7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:background="@drawable/shape_rounded_rectangle_yellow_28"
+                                    android:clickable="true"
+                                    android:padding="4dp"
+                                    android:src="@drawable/icon_plus" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Заголовок каталог -->
+                <TextView
+                    android:id="@+id/catalog_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:text="Каталог"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/left_border"
+                    app:layout_constraintTop_toBottomOf="@id/promotional_items_container" />
+                <!-- Каталог (разделы) -->
+                <GridLayout
+                    android:id="@+id/catalog_items_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="16dp"
+                    android:columnCount="3"
+                    android:padding="16dp"
+                    android:rowCount="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalog_header">
+
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_1"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFC1B6"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Наборы"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_2"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFE1AD"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Пицца"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_3"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#BAB892"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_3" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Паста"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_4"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#C4D3CE"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_4" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Ризотто"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_5"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#B9C4C8"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_5" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Салаты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_6"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#A3AE9D"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_6" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Полу\nфабрикаты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_7"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFE6B6"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_7" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Десерты"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_rowWeight="0"
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:id="@+id/catalog_item_8"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#D3C4C4"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_8" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Добавки\nк блюдам"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_margin="6dp"
+                        android:layout_columnWeight="0"
+                        android:layout_rowWeight="0"
+                        android:id="@+id/catalog_item_9"
+                        android:layout_width="108dp"
+                        android:layout_height="135dp"
+                        android:clickable="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="#FFD4AD"
+                            android:clickable="true"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="108dp"
+                                android:layout_height="95dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/image_catalog_9" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="12dp"
+                                android:fontFamily="@font/sf_pro_display"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="Напитки"
+                                android:textColor="#000000"
+                                android:textFontWeight="600"
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+
+                </GridLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
