@@ -1956,4 +1956,45 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99717171"
+        android:visibility="gone"/>
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/bottom_sheet_shifter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_shifter"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_sheet_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Экран выбора адреса (Bottom Sheet) -->
+        <LinearLayout
+            android:id="@+id/bottom_sheet_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_bottom_sheet"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.89"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" >
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
