@@ -6,4 +6,5 @@ object Constants {
     const val ERROR_SERVER_TEXT = "Ошибка сервера"
 
     const val SEARCH_DEBOUNCE_DELAY = 300L
+    const val CLICK_DEBOUNCE_DELAY = 1000L
 }
