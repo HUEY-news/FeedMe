@@ -1,5 +1,6 @@
 package com.gootax.feedme.data.network
 
+import com.gootax.feedme.data.dto.SearchRequest
 import com.gootax.feedme.data.dto.SearchResponse
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -14,6 +15,6 @@ interface ApiService {
 
     @POST("suggestions/api/4_1/rs/suggest/address")
     suspend fun search(
-        @Body request: String
+        @Body request: SearchRequest
     ): SearchResponse
 }

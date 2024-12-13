@@ -21,9 +21,8 @@ class MainViewModel @Inject constructor(
     fun getSearchState(): LiveData<SearchState> = searchState
     private fun renderState(state: SearchState) { searchState.postValue(state) }
 
-    fun search(query: String) {
+    private fun search(query: String) {
         if (query.isNotEmpty()) {
-            renderState(SearchState.Loading)
             viewModelScope.launch {
                 interactor
                     .search(query)

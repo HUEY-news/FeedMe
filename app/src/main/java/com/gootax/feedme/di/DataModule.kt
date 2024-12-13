@@ -1,6 +1,7 @@
 package com.gootax.feedme.di
 
 import android.content.Context
+import com.gootax.feedme.converter.Converter
 import com.gootax.feedme.data.network.ApiService
 import com.gootax.feedme.data.network.NetworkClient
 import com.gootax.feedme.data.network.RetrofitNetworkClient
@@ -34,6 +35,11 @@ class DataModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+    }
+
+    @Provides
+    fun provideConverter() : Converter {
+        return Converter()
     }
 
 }

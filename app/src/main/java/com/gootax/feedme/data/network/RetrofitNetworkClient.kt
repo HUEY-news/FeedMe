@@ -3,6 +3,7 @@ package com.gootax.feedme.data.network
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.util.Log
 import com.gootax.feedme.data.dto.Response
 import com.gootax.feedme.data.dto.SearchRequest
 import kotlinx.coroutines.Dispatchers
@@ -20,9 +21,12 @@ class RetrofitNetworkClient @Inject constructor(
 
         return withContext(Dispatchers.IO) {
             try {
-                val response = service.search(dto.query)
+                Log.i("TEST", "Отправка запроса: $dto")
+                val response = service.search(dto)
+                Log.i("TEST", "Ответ от сервера: ${response}")
                 response.apply { resultCode = 200 }
             } catch (exception: Throwable) {
+                Log.e("TEST", "Ошибка при запросе: ${exception.message}", exception)
                 Response().apply { resultCode = 500 }
             }
         }

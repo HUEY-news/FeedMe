@@ -1956,129 +1956,128 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View android:id="@+id/overlay"
+    <View
+        android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#99717171"
         android:visibility="gone"
-        tools:visibility="visible"/>
-    
+        tools:visibility="visible" />
+
+    <!-- Экран выбора адреса (Bottom Sheet) -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:background="@drawable/shape_bottom_sheet"
+        app:behavior_hideable="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+        <!-- Шифтер -->
         <ImageView
             android:id="@+id/bottom_sheet_shifter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_shifter"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toTopOf="@id/bottom_sheet_layout"
+            android:layout_marginTop="-8dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Экран выбора адреса (Bottom Sheet) -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bottom_sheet_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/shape_bottom_sheet"
-            android:orientation="vertical"
-            app:behavior_hideable="true"
-            app:layout_constraintStart_toStartOf="parent"
+        <!-- Поле ввода -->
+        <EditText
+            android:id="@+id/address_search_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@null"
+            android:fontFamily="@font/sf_pro_display"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="8dp"
+            android:textColor="#000000"
+            android:textFontWeight="400"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ул |" />
+
+        <!-- Нижняя граница поля ввода -->
+        <View
+            android:id="@+id/address_search_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#C0BEBE"
+            app:layout_constraintEnd_toEndOf="@id/address_search_field"
+            app:layout_constraintStart_toStartOf="@id/address_search_field"
+            app:layout_constraintTop_toBottomOf="@id/address_search_field" />
+
+        <!-- Иконка поиска -->
+        <ImageView
+            android:id="@+id/address_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icon_search_20"
+            app:layout_constraintBottom_toBottomOf="@id/address_search_field"
+            app:layout_constraintStart_toStartOf="@id/address_search_field"
+            app:layout_constraintTop_toTopOf="@id/address_search_field" />
+
+        <!-- Иконка сброса -->
+        <ImageView
+            android:id="@+id/address_reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:src="@drawable/icon_close"
+            app:layout_constraintBottom_toBottomOf="@id/address_search_field"
+            app:layout_constraintEnd_toEndOf="@id/address_search_field"
+            app:layout_constraintTop_toTopOf="@id/address_search_field" />
+
+        <!-- Текущее местоположение -->
+        <TextView
+            android:id="@+id/current_location_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:fontFamily="@font/sf_pro_display"
+            android:paddingHorizontal="40dp"
+            android:text="Текущее местоположение"
+            android:textColor="#000000"
+            android:textFontWeight="400"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/address_search_field"
+            app:layout_constraintStart_toStartOf="@id/address_search_field"
+            app:layout_constraintTop_toBottomOf="@id/address_search_border" />
+
+        <ImageView
+            android:id="@+id/current_location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icon_arrow_location"
+            app:layout_constraintBottom_toBottomOf="@id/current_location_text"
+            app:layout_constraintStart_toStartOf="@id/address_search_field"
+            app:layout_constraintTop_toTopOf="@id/current_location_text" />
+
+        <!-- Список локаций -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent="0.89"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" >
-
-            <!-- Поле ввода -->
-            <EditText
-                android:id="@+id/address_search_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@null"
-                android:fontFamily="@font/sf_pro_display"
-                android:maxLines="1"
-                android:paddingHorizontal="40dp"
-                android:paddingVertical="8dp"
-                android:text="ул |"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <!-- Нижняя граница поля ввода -->
-            <View
-                android:id="@+id/address_search_border"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="#C0BEBE"
-                app:layout_constraintEnd_toEndOf="@id/address_search_field"
-                app:layout_constraintStart_toStartOf="@id/address_search_field"
-                app:layout_constraintTop_toBottomOf="@id/address_search_field" />
-            <!-- Иконка поиска -->
-            <ImageView
-                android:id="@+id/address_search_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/icon_search_20"
-                app:layout_constraintBottom_toBottomOf="@id/address_search_field"
-                app:layout_constraintStart_toStartOf="@id/address_search_field"
-                app:layout_constraintTop_toTopOf="@id/address_search_field" />
-            <!-- Иконка сброса -->
-            <ImageView
-                android:id="@+id/address_reset_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/icon_close"
-                app:layout_constraintBottom_toBottomOf="@id/address_search_field"
-                app:layout_constraintEnd_toEndOf="@id/address_search_field"
-                app:layout_constraintTop_toTopOf="@id/address_search_field" />
-            <!-- Текущее местоположение -->
-            <TextView
-                android:id="@+id/current_location_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:fontFamily="@font/sf_pro_display"
-                android:paddingHorizontal="40dp"
-                android:text="Текущее местоположение"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/address_search_field"
-                app:layout_constraintStart_toStartOf="@id/address_search_field"
-                app:layout_constraintTop_toBottomOf="@id/address_search_border" />
-            <ImageView
-                android:id="@+id/current_location_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/icon_arrow_location"
-                app:layout_constraintBottom_toBottomOf="@id/current_location_text"
-                app:layout_constraintStart_toStartOf="@id/address_search_field"
-                app:layout_constraintTop_toTopOf="@id/current_location_text" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="20dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/current_location_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/item_address" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current_location_text"
+            tools:listitem="@layout/item_address" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

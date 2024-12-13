@@ -1,5 +1,6 @@
 package com.gootax.feedme.data.impl
 
+import android.util.Log
 import com.gootax.feedme.converter.Converter
 import com.gootax.feedme.data.dto.SearchRequest
 import com.gootax.feedme.data.dto.SearchResponse

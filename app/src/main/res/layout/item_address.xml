@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/location_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
     tools:ignore="HardcodedText">
 
     <TextView
@@ -14,7 +15,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:ellipsize="end"
         android:fontFamily="@font/sf_pro_display"
@@ -33,7 +33,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:ellipsize="end"
         android:fontFamily="@font/sf_pro_display"

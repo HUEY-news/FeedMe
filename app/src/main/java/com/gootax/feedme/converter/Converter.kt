@@ -11,7 +11,7 @@ class Converter {
         return suggestions.map { address -> map(address) }
     }
 
-    fun map(address: AddressDTO): Address {
+    private fun map(address: AddressDTO): Address {
         return Address(
             shortAddress = address.shortAddress,
             fullAddress = address.fullAddress,
@@ -21,9 +21,12 @@ class Converter {
 
     private fun map(details: AddressDetailsDTO): AddressDetails {
         return AddressDetails(
-            city = details.city,
-            region = details.region,
-            country = details.country
+            id = details.id ?: "null",
+            street = details.street ?: "",
+            settlement = details.settlement ?: "",
+            city = details.city ?: "",
+            region = details.region ?: "",
+            country = details.country ?: ""
         )
     }
 
