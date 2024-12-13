@@ -17,17 +17,19 @@ class ViewHolder(
 
     fun bind(address: Address) {
 
-        binding.locationText.text =
-            address.addressDetails.street.ifEmpty {
-                address.addressDetails.settlement.ifEmpty {
-                    address.addressDetails.city.ifEmpty {
-                        address.addressDetails.region.ifEmpty {
-                            address.addressDetails.country
-                        }
+        var location = address.addressDetails.street.ifEmpty {
+            address.addressDetails.settlement.ifEmpty {
+                address.addressDetails.city.ifEmpty {
+                    address.addressDetails.region.ifEmpty {
+                        address.addressDetails.country
                     }
                 }
             }
+        }
 
+        if (address.addressDetails.house.isNotEmpty()) location += ", ${address.addressDetails.house}"
+
+        binding.locationText.text = location
         binding.locationDetailsText.text = address.shortAddress
     }
 }

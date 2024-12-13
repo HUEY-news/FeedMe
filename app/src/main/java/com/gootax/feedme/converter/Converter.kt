@@ -22,6 +22,7 @@ class Converter {
     private fun map(details: AddressDetailsDTO): AddressDetails {
         return AddressDetails(
             id = details.id ?: "null",
+            house = details.house ?: "",
             street = details.street ?: "",
             settlement = details.settlement ?: "",
             city = details.city ?: "",

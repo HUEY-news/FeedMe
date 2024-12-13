@@ -9,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.gootax.feedme.databinding.FragmentMainBinding
 import com.gootax.feedme.domain.model.Address
@@ -90,6 +92,14 @@ class MainFragment : Fragment() {
         binding.addressButton.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                } else findNavController().navigateUp()
+            }
+        })
     }
     private fun setupRecyclerView() {
         adapter = Adapter { address: Address -> onClickDebounce(address) }
@@ -100,7 +110,7 @@ class MainFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.searchIcon.isVisible = !text.isNullOrEmpty()
+                binding.searchIcon.isVisible = text.isNullOrEmpty()
             }
         }
         searchTextWatcher?.let { watcher -> binding.searchField.addTextChangedListener(watcher) }
