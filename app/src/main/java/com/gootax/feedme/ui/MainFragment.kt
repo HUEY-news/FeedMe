@@ -92,6 +92,7 @@ class MainFragment : Fragment() {
             })
 
         binding.addressButton.setOnClickListener {
+            Log.w("TEST", "addressButton clicked!")
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
@@ -104,7 +105,11 @@ class MainFragment : Fragment() {
         })
     }
     private fun setupRecycler() {
-        adapter = Adapter { address: Address -> onClickDebounce(address) }
+        adapter = Adapter { address: Address ->
+            Log.w("TEST", "${address.shortAddress} clicked!")
+            onClickDebounce(address)
+        }
+
         binding.recycler.adapter = adapter
     }
     private fun setupTextWatchers() {
@@ -129,6 +134,7 @@ class MainFragment : Fragment() {
     }
     private fun setupClickListeners() {
         binding.addressResetButton.setOnClickListener {
+            Log.w("TEST", "addressResetButton clicked!")
             binding.addressSearchField.setText("")
             updateSearchResult(listOf())
             val inputMethodManager = requireContext()
@@ -139,6 +145,58 @@ class MainFragment : Fragment() {
                 binding.addressSearchField.windowToken,
                 0
             )
+        }
+
+        with(binding) {
+            menuButton.setOnClickListener { Log.w("TEST", "menuButton clicked!") }
+            favoriteButton.setOnClickListener { Log.w("TEST", "favoriteButton clicked!") }
+
+            promoSection1.setOnClickListener { Log.w("TEST", "promoSection1 clicked!") }
+            promoSection2.setOnClickListener { Log.w("TEST", "promoSection2 clicked!") }
+            promoSection3.setOnClickListener { Log.w("TEST", "promoSection3 clicked!") }
+            promoSection4.setOnClickListener { Log.w("TEST", "promoSection4 clicked!") }
+            promoSection5.setOnClickListener { Log.w("TEST", "promoSection5 clicked!") }
+            promoSection6.setOnClickListener { Log.w("TEST", "promoSection6 clicked!") }
+            promoSection7.setOnClickListener { Log.w("TEST", "promoSection7 clicked!") }
+
+            promoBanner1.setOnClickListener { Log.w("TEST", "promoBanner1 clicked!") }
+            promoBanner2.setOnClickListener { Log.w("TEST", "promoBanner2 clicked!") }
+            promoBanner3.setOnClickListener { Log.w("TEST", "promoBanner3 clicked!") }
+            promoBanner4.setOnClickListener { Log.w("TEST", "promoBanner4 clicked!") }
+            promoBanner5.setOnClickListener { Log.w("TEST", "promoBanner5 clicked!") }
+            promoBanner6.setOnClickListener { Log.w("TEST", "promoBanner6 clicked!") }
+            promoBanner7.setOnClickListener { Log.w("TEST", "promoBanner7 clicked!") }
+
+            showAllButton.setOnClickListener { Log.w("TEST", "showAllButton clicked!") }
+
+            imageDish1.setOnClickListener { Log.w("TEST", "imageDish1 clicked!") }
+            imageDish2.setOnClickListener { Log.w("TEST", "imageDish2 clicked!") }
+            imageDish3.setOnClickListener { Log.w("TEST", "imageDish3 clicked!") }
+            imageDish4.setOnClickListener { Log.w("TEST", "imageDish4 clicked!") }
+            imageDish5.setOnClickListener { Log.w("TEST", "imageDish5 clicked!") }
+            imageDish6.setOnClickListener { Log.w("TEST", "imageDish6 clicked!") }
+            imageDish7.setOnClickListener { Log.w("TEST", "imageDish7 clicked!") }
+
+            minusButton1.setOnClickListener { Log.w("TEST", "minusButton1 clicked!") }
+            plusButton1.setOnClickListener { Log.w("TEST", "plusButton1 clicked!") }
+            plusYellowButton2.setOnClickListener { Log.w("TEST", "plusYellowButton2 clicked!") }
+            plusYellowButton3.setOnClickListener { Log.w("TEST", "plusYellowButton3 clicked!") }
+            plusYellowButton4.setOnClickListener { Log.w("TEST", "plusYellowButton4 clicked!") }
+            plusYellowButton5.setOnClickListener { Log.w("TEST", "plusYellowButton5 clicked!") }
+            plusYellowButton6.setOnClickListener { Log.w("TEST", "plusYellowButton6 clicked!") }
+            plusYellowButton7.setOnClickListener { Log.w("TEST", "plusYellowButton7 clicked!") }
+
+            catalogImage1.setOnClickListener { Log.w("TEST", "catalogImage1 clicked!") }
+            catalogImage2.setOnClickListener { Log.w("TEST", "catalogImage2 clicked!") }
+            catalogImage3.setOnClickListener { Log.w("TEST", "catalogImage3 clicked!") }
+            catalogImage4.setOnClickListener { Log.w("TEST", "catalogImage4 clicked!") }
+            catalogImage5.setOnClickListener { Log.w("TEST", "catalogImage5 clicked!") }
+            catalogImage6.setOnClickListener { Log.w("TEST", "catalogImage6 clicked!") }
+            catalogImage7.setOnClickListener { Log.w("TEST", "catalogImage7 clicked!") }
+            catalogImage8.setOnClickListener { Log.w("TEST", "catalogImage8 clicked!") }
+            catalogImage9.setOnClickListener { Log.w("TEST", "catalogImage9 clicked!") }
+
+            currentLocationText.setOnClickListener { Log.w("TEST", "currentLocationText clicked!") }
         }
     }
 

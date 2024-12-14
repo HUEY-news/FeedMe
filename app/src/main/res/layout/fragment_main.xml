@@ -191,7 +191,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_2"
                             android:layout_width="wrap_content"
@@ -218,7 +217,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_3"
                             android:layout_width="wrap_content"
@@ -245,7 +243,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_4"
                             android:layout_width="wrap_content"
@@ -272,7 +269,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_5"
                             android:layout_width="wrap_content"
@@ -299,7 +295,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_6"
                             android:layout_width="wrap_content"
@@ -326,7 +321,6 @@
                                 android:textColor="#000000"
                                 android:textSize="12sp" />
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/promo_section_7"
                             android:layout_width="wrap_content"
@@ -419,7 +413,6 @@
                                     android:textSize="24sp" />
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_2"
                             android:layout_width="290dp"
@@ -468,7 +461,6 @@
                             </LinearLayout>
 
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_3"
                             android:layout_width="290dp"
@@ -515,7 +507,6 @@
                                     android:textSize="24sp" />
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_4"
                             android:layout_width="290dp"
@@ -564,7 +555,6 @@
                             </LinearLayout>
 
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_5"
                             android:layout_width="290dp"
@@ -611,7 +601,6 @@
                                     android:textSize="24sp" />
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_6"
                             android:layout_width="290dp"
@@ -660,7 +649,6 @@
                             </LinearLayout>
 
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promo_banner_7"
                             android:layout_width="290dp"
@@ -896,7 +884,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_2"
                             android:layout_width="108dp"
@@ -1009,7 +996,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_3"
                             android:layout_width="108dp"
@@ -1122,7 +1108,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_4"
                             android:layout_width="108dp"
@@ -1235,7 +1220,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_5"
                             android:layout_width="108dp"
@@ -1348,7 +1332,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_6"
                             android:layout_width="108dp"
@@ -1461,7 +1444,6 @@
 
                             </LinearLayout>
                         </FrameLayout>
-
                         <FrameLayout
                             android:id="@+id/promotional_item_7"
                             android:layout_width="108dp"
@@ -1574,6 +1556,7 @@
 
                             </LinearLayout>
                         </FrameLayout>
+
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -1605,26 +1588,26 @@
                     app:layout_constraintTop_toBottomOf="@id/catalog_header">
 
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_1"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#FFC1B6"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_1"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_1" />
 
                             <TextView
@@ -1643,26 +1626,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_2"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#FFE1AD"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_2"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_2" />
 
                             <TextView
@@ -1681,26 +1664,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_3"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#BAB892"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_3"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_3" />
 
                             <TextView
@@ -1719,26 +1702,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_4"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#C4D3CE"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_4"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_4" />
 
                             <TextView
@@ -1757,26 +1740,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_5"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#B9C4C8"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_5"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_5" />
 
                             <TextView
@@ -1795,26 +1778,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_6"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#A3AE9D"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_6"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_6" />
 
                             <TextView
@@ -1833,26 +1816,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_7"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#FFE6B6"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_7"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_7" />
 
                             <TextView
@@ -1871,26 +1854,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_rowWeight="0"
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
                         android:id="@+id/catalog_item_8"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#D3C4C4"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_8"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_8" />
 
                             <TextView
@@ -1909,26 +1892,26 @@
 
                     </FrameLayout>
                     <FrameLayout
-                        android:layout_margin="6dp"
-                        android:layout_columnWeight="0"
-                        android:layout_rowWeight="0"
                         android:id="@+id/catalog_item_9"
                         android:layout_width="108dp"
                         android:layout_height="135dp"
-                        android:clickable="true">
+                        android:layout_rowWeight="0"
+                        android:layout_columnWeight="0"
+                        android:layout_margin="6dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:backgroundTint="#FFD4AD"
-                            android:clickable="true"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
 
                             <ImageView
+                                android:id="@+id/catalog_image_9"
                                 android:layout_width="108dp"
                                 android:layout_height="95dp"
                                 android:layout_gravity="center_horizontal"
+                                android:clickable="true"
                                 android:src="@drawable/image_catalog_9" />
 
                             <TextView
@@ -2004,7 +1987,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="ул |" />
-
         <!-- Нижняя граница поля ввода -->
         <View
             android:id="@+id/address_search_border"
@@ -2015,7 +1997,6 @@
             app:layout_constraintEnd_toEndOf="@id/address_search_field"
             app:layout_constraintStart_toStartOf="@id/address_search_field"
             app:layout_constraintTop_toBottomOf="@id/address_search_field" />
-
         <!-- Иконка поиска -->
         <ImageView
             android:id="@+id/address_search_icon"
@@ -2026,7 +2007,6 @@
             app:layout_constraintBottom_toBottomOf="@id/address_search_field"
             app:layout_constraintStart_toStartOf="@id/address_search_field"
             app:layout_constraintTop_toTopOf="@id/address_search_field" />
-
         <!-- Иконка сброса -->
         <ImageView
             android:id="@+id/address_reset_button"
@@ -2055,7 +2035,6 @@
             app:layout_constraintEnd_toEndOf="@id/address_search_field"
             app:layout_constraintStart_toStartOf="@id/address_search_field"
             app:layout_constraintTop_toBottomOf="@id/address_search_border" />
-
         <ImageView
             android:id="@+id/current_location_icon"
             android:layout_width="wrap_content"
