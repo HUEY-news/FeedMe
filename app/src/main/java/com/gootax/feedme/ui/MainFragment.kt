@@ -34,6 +34,11 @@ class MainFragment : Fragment() {
     private var searchTextWatcher: TextWatcher? = null
     private var addressTextWatcher: TextWatcher? = null
     private var adapter: Adapter? = null
+    val bottomSheetBehavior by lazy {
+        BottomSheetBehavior.from(binding.bottomSheetLayout).apply {
+            state = BottomSheetBehavior.STATE_HIDDEN
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -43,7 +48,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBottomSheet()
-        setupRecyclerView()
+        setupRecycler()
         setupTextWatchers()
         setupClickListeners()
 
@@ -55,14 +60,11 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun updateSearchResult(list: List<Address>) { adapter?.submitList(list) }
+    private fun updateSearchResult(list: List<Address>) {
+        adapter?.submitList(list)
+    }
 
     private fun setupBottomSheet() {
-        val bottomSheetBehavior =
-            BottomSheetBehavior.from(binding.bottomSheetLayout).apply {
-                state = BottomSheetBehavior.STATE_HIDDEN
-            }
-
         val peekHeight: Int = (resources.displayMetrics.heightPixels * 0.9).toInt()
         bottomSheetBehavior.peekHeight = peekHeight
 
@@ -101,7 +103,7 @@ class MainFragment : Fragment() {
             }
         })
     }
-    private fun setupRecyclerView() {
+    private fun setupRecycler() {
         adapter = Adapter { address: Address -> onClickDebounce(address) }
         binding.recycler.adapter = adapter
     }
@@ -140,6 +142,17 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun hideKeyboard() {
+        val inputMethodManager = requireContext()
+            .getSystemService(
+                Context.INPUT_METHOD_SERVICE
+            ) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(
+            binding.searchField.windowToken,
+            0
+        )
+    }
+
     private var isClickAllowed = true
 
     private fun clickDebounce(): Boolean {
@@ -156,7 +169,21 @@ class MainFragment : Fragment() {
 
     private fun onClickDebounce(address: Address) {
         if (clickDebounce()) {
-            // TODO: реализовать реакцию на выбор адреса!
+            var location = address.addressDetails.street.ifEmpty {
+                address.addressDetails.settlement.ifEmpty {
+                    address.addressDetails.city.ifEmpty {
+                        address.addressDetails.region.ifEmpty {
+                            address.addressDetails.country
+                        }
+                    }
+                }
+            }
+
+            if (address.addressDetails.house.isNotEmpty()) location += ", ${address.addressDetails.house}"
+
+            binding.addressText.text = location
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            hideKeyboard()
         }
     }
 }

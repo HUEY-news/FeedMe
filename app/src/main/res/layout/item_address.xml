@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
+    android:clickable="true"
     tools:ignore="HardcodedText">
 
     <TextView
@@ -15,7 +16,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:clickable="true"
         android:ellipsize="end"
         android:fontFamily="@font/sf_pro_display"
         android:maxLines="1"
@@ -33,7 +33,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:clickable="true"
         android:ellipsize="end"
         android:fontFamily="@font/sf_pro_display"
         android:maxLines="1"
