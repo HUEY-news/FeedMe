@@ -1994,7 +1994,7 @@
                 android:id="@+id/bottom_sheet_shifter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8dp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/icon_shifter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -2068,7 +2068,6 @@
                 app:layout_constraintEnd_toEndOf="@id/address_search_field"
                 app:layout_constraintStart_toStartOf="@id/address_search_field"
                 app:layout_constraintTop_toBottomOf="@id/address_search_border" />
-
             <ImageView
                 android:id="@+id/current_location_icon"
                 android:layout_width="wrap_content"
@@ -2095,6 +2094,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <!-- Боковое меню -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/drawer_content"
         android:layout_width="300dp"

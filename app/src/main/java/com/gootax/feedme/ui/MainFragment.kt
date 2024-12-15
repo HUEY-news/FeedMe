@@ -81,9 +81,11 @@ class MainFragment : Fragment() {
                     when (newState) {
                         BottomSheetBehavior.STATE_HIDDEN -> {
                             binding.overlay.isVisible = false
+                            hideKeyboard()
                         }
                         else -> {
                             binding.overlay.isVisible = true
+                            hideKeyboard()
                         }
                     }
                 }
