@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -98,9 +100,9 @@ class MainFragment : Fragment() {
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                } else findNavController().navigateUp()
+                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN) bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                else if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) binding.drawerLayout.closeDrawer(GravityCompat.START)
+                else findNavController().navigateUp()
             }
         })
     }
@@ -148,7 +150,12 @@ class MainFragment : Fragment() {
         }
 
         with(binding) {
-            menuButton.setOnClickListener { Log.w("TEST", "menuButton clicked!") }
+            menuButton.setOnClickListener {
+                Log.w("TEST", "menuButton clicked!")
+                if (!drawerLayout.isDrawerOpen(GravityCompat.START))
+                    drawerLayout.openDrawer(GravityCompat.START)
+            }
+
             favoriteButton.setOnClickListener { Log.w("TEST", "favoriteButton clicked!") }
 
             promoSection1.setOnClickListener { Log.w("TEST", "promoSection1 clicked!") }
@@ -197,6 +204,22 @@ class MainFragment : Fragment() {
             catalogImage9.setOnClickListener { Log.w("TEST", "catalogImage9 clicked!") }
 
             currentLocationText.setOnClickListener { Log.w("TEST", "currentLocationText clicked!") }
+
+            profileImage.setOnClickListener { Log.w("TEST", "profileImage clicked!") }
+            profileName.setOnClickListener { Log.w("TEST", "profileName clicked!") }
+            profilePhoneNumber.setOnClickListener { Log.w("TEST", "profilePhoneNumber clicked!") }
+            profilePaymentText.setOnClickListener { Log.w("TEST", "profilePaymentText clicked!") }
+            profileCreditCardText.setOnClickListener { Log.w("TEST", "profileCreditCardText clicked!") }
+            profileMyLocationsText.setOnClickListener { Log.w("TEST", "profileMyLocationsText clicked!") }
+            profileMyOrdersText.setOnClickListener { Log.w("TEST", "profileMyOrdersText clicked!") }
+            profileFavoritesText.setOnClickListener { Log.w("TEST", "profileFavoritesText clicked!") }
+            profileNewsText.setOnClickListener { Log.w("TEST", "profileNewsText clicked!") }
+            profileCouponsText.setOnClickListener { Log.w("TEST", "profileCouponsText clicked!") }
+            profileAboutText.setOnClickListener { Log.w("TEST", "profileAboutText clicked!") }
+            profileInviteText.setOnClickListener { Log.w("TEST", "profileInviteText clicked!") }
+            profileSettingsText.setOnClickListener { Log.w("TEST", "profileSettingsText clicked!") }
+            profileContactUsIcon.setOnClickListener { Log.w("TEST", "profileContactUsIcon clicked!") }
+            profileContactUsText.setOnClickListener { Log.w("TEST", "profileContactUsText clicked!") }
         }
     }
 
