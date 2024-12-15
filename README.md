@@ -43,5 +43,6 @@ API для поиска адреса: https://dadata.ru/api/suggest/address/.
 <br>**Модальный экран "Поиска адреса"**
 
 <br>**Модальный экран "Профиль с деталями заказов"**<br>
-https://github.com/user-attachments/assets/5fe4372f-adde-4d1d-a49d-17491f3f38d4
+<img src="https://github.com/user-attachments/assets/5fe4372f-adde-4d1d-a49d-17491f3f38d4" width="340" height="699" />  
+
 
