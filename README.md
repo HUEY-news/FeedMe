@@ -13,7 +13,7 @@
 
 <br>**Модальный экран "Поиска адреса"**
 
-API для поиска адреса: https://dadata.ru/api/suggest/address/. 
+<a href = https://dadata.ru/api/suggest/address> API для поиска адреса </a>. 
 Экран открывается модально при нажатии на адрес на главном экране. 
 Запросы осуществляются не чаще чем в раз в 300 миллисекунд 
 (то есть, если пользователь вводит текст и останавливается больше чем на 300 мс - то отправляется запрос). 
@@ -37,3 +37,8 @@ API для поиска адреса: https://dadata.ru/api/suggest/address/.
 + ViewBinding  
 + Navigation Component  
 + Coroutines
+
+## Демонстрация работы экранов
+<a href = https://github.com/user-attachments/assets/6d00b94d-6920-454b-899f-6b08c64030c5> **Главный экран** </a> <br>
+<a href = https://github.com/user-attachments/assets/7c6a7b57-e26b-4a25-9a06-c99123ed62f6> **Модальный экран "Поиска адреса"** </a> <br>
+<a href = https://github.com/user-attachments/assets/7029abd3-21a9-4210-9a7c-dab21da6648a> **Модальный экран "Профиль с деталями заказов"** </a>
